@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./layout/head') %>
+<body>
+    <%- include('./layout/header') %>
+
+    <% fromapi.forEach(character=>{ %>
+        <section style="border:tomato solid ;">
+            <p><%=character.name%></p>
+            <p><%=character.house%></p>
+            <p><%=character.patronus%></p>
+            <p><%=character.is_alive%></p>
+            <form action="/character/<%=character.id%>" method="GET">
+                <input type="submit" value="edit">
+            </form>
+        </section>
+
+    <%})%>        
+    
+</body>
+</html>

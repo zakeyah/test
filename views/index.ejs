@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layout/head') %>
+<body>
+    <%- include('./layout/header') %>
+
+    <% allData.forEach(character=>{ %>
+        <section style="border:tomato solid ;">
+            <p><%=character.name%></p>
+            <p><%=character.house%></p>
+            <p><%=character.patronus%></p>
+            <p><%=character.is_alive%></p>
+            <form action="/favorite-character" method="POST">
+                <input type="hidden" name="name" value="<%=character.name%>">
+                <input type="hidden" name="house" value="<%=character.house%>">
+                <input type="hidden" name="patronus" value="<%=character.patronus%>">
+                <input type="hidden" name="is_alive" value="<%=character.is_alive%>">
+                <input type="submit" value="add to fav">
+            </form>
+        </section>
+
+    <%})%>
+    
+</body>
+</html>

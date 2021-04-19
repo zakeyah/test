@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./layout/head') %>
+<body>
+    <%- include('./layout/header') %>
+
+    <% selcted.forEach(character=>{ %>
+        <section style="border:tomato solid ;">
+            <p><%=character.name%></p>
+            <p><%=character.house%></p>
+            <p><%=character.patronus%></p>
+            <p><%=character.is_alive%></p>
+            <form action="/character/<%=character.id%>?_method=delete" method="POST">
+                <input type="submit" value="delete">
+            </form>
+            <form action="/character/<%=character.id%>?_method=PUT" method="POST">
+                <input type="text" name="name" value="<%=character.name%>">
+                <input type="text" name="house" value="<%=character.house%>">
+                <input type="text" name="patronus" value="<%=character.patronus%>">
+                <select name="is_alive" id="">
+                  <%  if(character.is_alive){%>
+                    <option value="t">alive</option>
+                    <option value="f">dead</option>
+                <%  }else{ %>
+                    <option value="f">dead</option>
+                    <option value="t">alive</option>
+             <%   } %>
+                </select>
+                <input type="submit" value="update">
+            </form>
+        </section>
+
+    <%})%>        
+</body>
+</html>
